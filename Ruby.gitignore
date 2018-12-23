@@ -1,7 +1,0 @@
-*.gem
-*.log
-config/*
-mods/*
-output/*
-
-.bundle/
