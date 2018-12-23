@@ -125,7 +125,7 @@ class Config
                             info = zip_file.read( "mcmod.info" )
                             begin
                                 json = JSON.parse( info )[ 0 ]
-                                modslug = json['modid'].downcase
+                                modslug = json['modid']
                                 version = json['version']
                                 found = true
                                 zip_file.close()
@@ -157,11 +157,11 @@ class Config
 
 # If the loop above was not able to obtain information automatically, default back to filename.
                 if ( found == false )
-                    modslug = current.downcase
+                    modslug = current
                     version = "N/A"
                 end
 
-                update( filename, modslug, version )
+                update( filename, modslug.downcase, version )
             end
         end
 end
