@@ -22,7 +22,7 @@ Ruby | 2.5 and above
 Ruby | Must have 'rubyzip' gem installed. 
 OS | GNU/Linux, Windows 7 and above, macOS Yosemite and above
 
-To run this program, simply clone this repository, add mods to 'mods' folder and run "ruby run.rb". This should automatically grab mods from the mods folder and generate appropriate configuration file. It will prompt you to check configuration file at config/mods.yml, which you should than check for any mods that has "N/A" in "version:". Next, you should get the version of the mod, change version and trim the modname so that it only includes modname.
+To run this program, simply clone this repository, create 'mods' folder where run.rb is, add mods to 'mods' folder and run "ruby run.rb". This should automatically grab mods from the mods folder and generate appropriate configuration file. It will prompt you to check configuration file at config/mods.yml, which you should than check for any mods that has "N/A" in "version:". Next, you should get the version of the mod, change version and trim the modname so that it only includes modname.
 
 For instance:
 
