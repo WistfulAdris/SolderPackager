@@ -80,24 +80,7 @@ class Config
                     return nil
                 end
             end
-=begin            
-            if ( ! File.zero? file )
-                data.each do | keyone, valueone |
-                    if keyone == modslug
-                        valueone.each do | key, value |
-                                    exists = true
-                                    if ( key == "version" )
-                                        data[key] = version
-                                        puts "#{key} : #{value}"
-                                    elsif ( key == "filename" )
-                                        data[key] = filename
-                                        puts "#{key} : #{value}"
-                                    end
-                                end
-                    end
-                end
-            end
-=end
+
             file.close()
             append( filename, modslug, version )
         end
@@ -218,7 +201,7 @@ class Solder
         
         if ( ! File.zero? configFile )
             configHash.each do | key, value |
-                zipFile = @outputPath + key + "/" + key + "-" + configHash[key]["version"] + ".zip"
+                zipFile = @outputPath.to_s + key.to_s + "/" + key.to_s + "-" + configHash[key]["version"].to_s + ".zip"
                 path = @outputPath + key + "/" + "mods" + "/"
                 File.delete( zipFile ) if File.exists?( zipFile )
                 Zip::File.open( zipFile, Zip::File::CREATE ) do | zip_file |
