@@ -1,1 +1,6 @@
 gem 'rubyzip'
+gem 'zip'
+gem 'yaml'
+gem 'json'
+gem 'fileutils'
+gem 'perfect_toml'

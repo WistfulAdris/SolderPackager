@@ -21,7 +21,7 @@ class Config
            @configFile = configFile
            @configPath = configPath
 
-           if ( ! Dir.exists? @configPath )
+           if ( ! Dir.exist? @configPath )
                Dir.mkdir( @configPath )
            end
            if ( ! File.exist? @configPath + @configFile )
@@ -222,7 +222,7 @@ class Solder
             configHash.each do | key, value |
                 zipFile = @outputPath.to_s + key.to_s + "/" + key.to_s + "-" + configHash[key]["version"].to_s + ".zip"
                 path = @outputPath + key + "/" + "mods" + "/"
-                File.delete( zipFile ) if File.exists?( zipFile )
+                File.delete( zipFile ) if File.exist?( zipFile )
                 Zip::File.open( zipFile, Zip::File::CREATE ) do | zip_file |
                     zip_file.mkdir( "mods" )
                     zip_file.add( "mods/" + configHash[key]["filename"], path + configHash[key]["filename"] )
