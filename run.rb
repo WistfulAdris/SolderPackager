@@ -134,6 +134,18 @@ class Config
                                 found = false
                                 zip_file.close()
                             end
+                        elsif ( zip_file.find_entry( "fabric.mod.json" ) != nil )
+                            info = zip_file.read( "fabric.mod.json" )
+                            begin
+                                toml = JSON.parse( info )
+                                modslug = toml[ "id" ]
+                                version = toml[ "version" ]
+                                found = true
+                                zip_file.close()
+                            rescue
+                                found = false
+                                zip_file.close()
+                            end
 
                         else # catch case for no matches
                             found = false
