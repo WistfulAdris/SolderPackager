@@ -134,6 +134,23 @@ class Config
                                 found = false
                                 zip_file.close()
                             end
+                        elsif ( zip_file.find_entry( "META-INF/neoforge.mods.toml" ) != nil )
+                            info = zip_file.read( "META-INF/neoforge.mods.toml" )
+                            begin
+                                toml = PerfectTOML.parse( info )['mods'][0]
+                                modslug = toml[ "modId" ]
+                                version = toml[ "version" ]
+                                if ( version == "${file.jarVersion}" )
+                                    if ( zip_file.find_entry( "META-INF/MANIFEST.MF" )  != nil )
+                                        version = Hash[zip_file.read( "META-INF/MANIFEST.MF" ).split("\n").map{|i|i.split(': ')}]["Implementation-Version"].chomp
+                                    end
+                                end
+                                found = true
+                                zip_file.close()
+                            rescue
+                                found = false
+                                zip_file.close()
+                            end
                         elsif ( zip_file.find_entry( "fabric.mod.json" ) != nil )
                             info = zip_file.read( "fabric.mod.json" )
                             begin
